@@ -25,22 +25,22 @@ If everything is properly done, you will get the following output:
 the translated T program, and the execution result of the translated program by the T interpreter.
 The results from the S and T interpreters must be equivalent.)
 
-== source program ==
-{
- int x;
- x = 0;
- print x+1;
-}
-== execute the source program ==
-1
-== translated target program ==
-0 : x = 0
-0 : t1 = 0
-0 : x = t1
-0 : t3 = x
-0 : t4 = 1
-0 : t2 = t3 + t4
-0 : write t2
-0 : HALT
-== execute the translated program ==
-1
+    == source program ==
+    {
+     int x;
+     x = 0;
+     print x+1;
+    }
+    == execute the source program ==
+    1
+    == translated target program ==
+    0 : x = 0
+    0 : t1 = 0
+    0 : x = t1
+    0 : t3 = x
+    0 : t4 = 1
+    0 : t2 = t3 + t4
+    0 : write t2
+    0 : HALT
+    == execute the translated program ==
+    1
