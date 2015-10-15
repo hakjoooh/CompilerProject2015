@@ -11,9 +11,9 @@ This package includes the following files:
 - [translate.ml]: the translator that compiles S to T
 
 Your job is to complete the implementation of the lexer, parser, and translator:
-1. Complete the lexical definition of S in [lexer.mll]
-2. Complete the syntax definition of S in [parser.mly]
-3. Implement the translator from S to T in [translate.ml]
+- Complete the lexical definition of S in [lexer.mll]
+- Complete the syntax definition of S in [parser.mly]
+- Implement the translator from S to T in [translate.ml]
 
 # How to run
  
