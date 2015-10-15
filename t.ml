@@ -6,19 +6,19 @@ type program = linstr list
 and linstr = label * instr (* labeled instruction *)
 and instr = 
   | SKIP
-  | ALLOC of var * int
-  | ASSIGNV of var * bop * var * var (* x = y op z *)
-  | ASSIGNC of var * bop * var * int (* x = y op n *)
-  | ASSIGNU of var * uop * var 
-  | COPY of var * var 
-  | COPYC of var * int
-  | UJUMP of label
-  | CJUMP of var * label
-  | CJUMPF of var * label
-  | LOAD of var * arr
-  | STORE of arr * var
-  | READ of var
-  | WRITE of var
+  | ALLOC of var * int  (* x = alloc(n) *)
+  | ASSIGNV of var * bop * var * var (* x = y bop z *)
+  | ASSIGNC of var * bop * var * int (* x = y bop n *)
+  | ASSIGNU of var * uop * var  (* x = uop y *)
+  | COPY of var * var           (* x = y *)
+  | COPYC of var * int          (* x = n *)
+  | UJUMP of label              (* goto L *)
+  | CJUMP of var * label        (* if x goto L *)
+  | CJUMPF of var * label       (* ifFalse x goto L *)
+  | LOAD of var * arr           (* x = a[i] *)
+  | STORE of arr * var          (* a[i] = x *)
+  | READ of var                 (* read x *)
+  | WRITE of var                (* write x *)
   | HALT
 and var = string
 and label = int
