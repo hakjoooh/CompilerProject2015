@@ -9,7 +9,7 @@ and decl  = typ * id
 and typ   = TINT | TARR of int
 and stmts = stmt list 
 and id    = string
-and stmt  = ASSIGN of lv * exp 
+and stmt  = ASSIGN of lv * exp       (* lv = exp *)
           | IF of exp * stmt * stmt 
           | WHILE of exp * stmt
           | DOWHILE of stmt * exp
