@@ -13,21 +13,21 @@ let main () =
     
 	if !src = "" then Arg.usage spec usage
     else
+		try
     	let file_channel = open_in !src in
     	let lexbuf = Lexing.from_channel file_channel in
     	let s_pgm = Parser.program Lexer.start lexbuf in
+      let _ = print_endline "== source program ==";
+              S.pp s_pgm in
+      let _ = print_endline "== execute the source program ==";
+              (try S.execute s_pgm;
+              with (Failure s) -> print_endline ("Error: "^s)) in
       let t_pgm = Translate.translate s_pgm in
-		try
-      print_endline "== source program ==";
-      S.pp s_pgm;
-      print_endline "== execute the source program ==";
-      (try S.execute s_pgm;
-      with (Failure s) -> print_endline ("Error: "^s));
-      print_endline "== translated target program ==";
-      T.pp  t_pgm;
-      print_endline "== execute the translated program ==";
-      (try T.execute t_pgm
-      with (Failure s) -> print_endline ("Error: "^s));
+      let _ = print_endline "== translated target program ==";
+              T.pp  t_pgm in
+        print_endline "== execute the translated program ==";
+        (try T.execute t_pgm
+        with (Failure s) -> print_endline ("Error: "^s)) 
 		with _ -> print_endline (!src ^ ": Error")
 
 let _ = main ()
