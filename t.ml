@@ -175,10 +175,10 @@ let run : global -> state -> state
   let pc'  = get_next_pc (pgm,l2pc) instr (pc,mem) in
     (pc',mem')
 
-let rec loop : global -> state -> unit
-=fun (pgm,l2pc) (pc,mem) -> 
-  if get_instr pgm pc = HALT then ()
-  else loop (pgm,l2pc) (run (pgm,l2pc) (pc,mem)) 
+let rec loop : global -> state -> int -> unit
+=fun (pgm,l2pc) (pc,mem) k ->
+  if get_instr pgm pc = HALT then print_endline ("The number of instructions executed : " ^ string_of_int k)
+  else loop (pgm,l2pc) (run (pgm,l2pc) (pc,mem)) (k+1)
 
 let get_label2pc : program -> l2pc 
 =fun pgm -> 
@@ -191,7 +191,7 @@ let get_label2pc : program -> l2pc
 let execute : program -> unit
 =fun pgm -> 
   let l2pc = get_label2pc pgm in
-    loop (pgm,l2pc) (0,Memory.empty)
+    loop (pgm,l2pc) (0,Memory.empty) 0
 
 (*************************************)
 (* pretty printer for the T language *)
