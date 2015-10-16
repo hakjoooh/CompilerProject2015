@@ -50,7 +50,7 @@ final code (i.e., the number of instructions being executed).
     == execute the optimized target program ==
     1
 
-If everything is properly done, you will get the following output:
+If everything is properly done, you will get the output similar to above:
 - It shows the source program, 
 - the output of the source program by the S interpreter,
 - the translated T program, 
