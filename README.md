@@ -16,7 +16,7 @@ Your job is to complete the implementation of the lexer, parser, translator, and
 - Complete the lexical definition of S in [lexer.mll]
 - Complete the syntax definition of S in [parser.mly]
 - Implement the translator from S to T in [translator.ml]
-- Implement an optimizer from S to T in [optimizer.ml]
+- Implement an optimizer for T in [optimizer.ml]
 
 Regarding the optimizer, try your best as you can. The score will be based on the
 correctness (i.e., semantics-preserveness) of the optimizer and the quality of the
@@ -46,7 +46,7 @@ final code (i.e., the number of instructions being executed).
     == execute the translated program ==
     1
     The number of instructions executed : 7
-    == optimized target program (NOTE: this is just an exmaple of optimization) ==
+    == optimized target program ==
     0 : write 1
     0 : HALT
     == execute the optimized target program ==
