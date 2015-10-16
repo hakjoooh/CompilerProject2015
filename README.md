@@ -27,9 +27,9 @@ final code (i.e., the number of instructions being executed).
     $ ./run test/t0.s
     == source program ==
     {
-     int x;
-     x = 0;
-     print x+1;
+    int x;
+    x = 0;
+    print x+1;
     }
     == execute the source program ==
     1
@@ -44,11 +44,13 @@ final code (i.e., the number of instructions being executed).
     0 : HALT
     == execute the translated program ==
     1
-    == optimized target program (this is just an example) ==
+    The number of instructions executed : 7
+    == optimized target program (NOTE: this is just an exmaple of optimization) ==
     0 : write 1
     0 : HALT
     == execute the optimized target program ==
     1
+    The number of instructions executed : 1
 
 If everything is properly done, you will get the output similar to above:
 - It shows the source program, 
@@ -57,6 +59,4 @@ If everything is properly done, you will get the output similar to above:
 - the output of the translated program by the T interpreter,
 - the optimized T program, and
 - the output of the optimized program by the T interpreter.
-The correctness criteria of the compiler is that all the outputs from the S and T interpreters must be equivalent.
-
-
+- The T interpreter also shows the number of instructions executed. In optimization, your goal is to reduce that number as possible as you can, while preserving the output of the original program.
