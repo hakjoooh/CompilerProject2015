@@ -1,6 +1,5 @@
 # COSE312 Compiler Project 2015, Korea University
 
-
 The goal of this project is to build a front-end of a toy compiler.
 The source language ("S") and target language ("T") are defined in lecture slides.
 
@@ -9,15 +8,21 @@ This package includes the following files:
 - [parser.mly]: the parser specification for ocamlyacc
 - [s.ml]: abstract syntax and interpreter definitions for the S language
 - [t.ml]: abstract syntax and interpreter definitions for the T language
-- [translate.ml]: the translator that compiles S to T
+- [translator.ml]: the translator that compiles S to T
+- [optimizer.ml]: an optimizer that translates a T program to an efficient T program
 
 Your job is to complete the implementation of the lexer, parser, and translator:
 - Complete the lexical definition of S in [lexer.mll]
 - Complete the syntax definition of S in [parser.mly]
-- Implement the translator from S to T in [translate.ml]
+- Implement the translator from S to T in [translator.ml]
+- Implement an optimizer from S to T in [optimizer.ml]
+
+Regarding the optimizer, try your best as you can. The score will be based on the
+correctness (i.e., semantics-preserveness) of the optimizer and the quality of the
+final code (i.e., the number of instructions being executed).
 
 # How to run
- 
+
     $ Make
     $ ./run test/t0.s
 
@@ -44,4 +49,9 @@ The results from the S and T interpreters must be equivalent.)
     0 : write t2
     0 : HALT
     == execute the translated program ==
+    1
+    == optimized target program (this is just an example) ==
+    0 : write 1
+    0 : HALT
+    == execute the optimized target program ==
     1
