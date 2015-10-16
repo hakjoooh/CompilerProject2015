@@ -10,6 +10,8 @@
 } 
 
 let blank = [' ' '\n' '\t' '\r']+
+let id = ['a'-'z' 'A'-'Z']['a'-'z' 'A'-'Z' '0'-'9' '_']*
+let number = ['0'-'9']+
 
 rule start = parse 
      | blank { start lexbuf }
