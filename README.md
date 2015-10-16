@@ -1,6 +1,6 @@
 # COSE312 Compiler Project 2015, Korea University
 
-The goal of this project is to build a front-end of a toy compiler.
+The goal of this project is to build a front-end and a middle-end of a toy compiler.
 The source language ("S") and target language ("T") are defined in lecture slides.
 
 This package includes the following files:
@@ -10,8 +10,9 @@ This package includes the following files:
 - [t.ml]: abstract syntax and interpreter definitions for the T language
 - [translator.ml]: the translator that compiles S to T
 - [optimizer.ml]: an optimizer that translates a T program to an efficient T program
+- [main.ml]: the driver routine
 
-Your job is to complete the implementation of the lexer, parser, and translator:
+Your job is to complete the implementation of the lexer, parser, translator, and optimizer:
 - Complete the lexical definition of S in [lexer.mll]
 - Complete the syntax definition of S in [parser.mly]
 - Implement the translator from S to T in [translator.ml]
