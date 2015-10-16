@@ -27,9 +27,13 @@ final code (i.e., the number of instructions being executed).
     $ ./run test/t0.s
 
 If everything is properly done, you will get the following output:
-(It shows the source program, the execution result of the source program by the S interpreter,
-the translated T program, and the execution result of the translated program by the T interpreter.
-The results from the S and T interpreters must be equivalent.)
+- It shows the source program, 
+- the output of the source program by the S interpreter,
+- the translated T program, 
+- the output of the translated program by the T interpreter,
+- the optimized T program, and
+- the output of the optimized program by the T interpreter.
+The correctness criteria of the compiler is that all the outputs from the S and T interpreters must be equivalent.
 
     == source program ==
     {
