@@ -1,7 +1,7 @@
 all: run
 
-run: enum.cmo pMap.cmo lexer.cmo parser.cmo s.cmo t.cmo translator.cmo optimizer.cmo main.cmo
-		ocamlc -o run enum.cmo pMap.cmo lexer.cmo parser.cmo s.cmo t.cmo translator.cmo optimizer.cmo main.cmo
+run: enum.cmo pMap.cmo lexer.cmo parser.cmo s.cmo t.cmo translator.cmo ssa.cmo optimizer.cmo main.cmo
+		ocamlc -o run enum.cmo pMap.cmo lexer.cmo parser.cmo s.cmo t.cmo translator.cmo ssa.cmo optimizer.cmo main.cmo
 
 enum.cmo : enum.ml
 		ocamlc -c enum.ml
@@ -18,6 +18,9 @@ t.cmo : pMap.cmo t.ml
 translator.cmo : s.cmo t.cmo translator.ml
 		ocamlc -c translator.ml
 
+ssa.cmo : t.cmo
+	  ocamlc -c ssa.ml
+
 optimizer.cmo : t.cmo
 		ocamlc -c optimizer.ml
 
@@ -33,7 +36,7 @@ parser.cmi: parser.mli
 parser.cmo: parser.ml parser.cmi
 		ocamlc -c parser.ml
 
-main.cmo : s.cmo t.cmo translator.cmo optimizer.cmo main.ml
+main.cmo : s.cmo t.cmo translator.cmo ssa.cmo optimizer.cmo main.ml
 		ocamlc -c main.ml
 
 lexer.cmo: lexer.ml
