@@ -7,6 +7,9 @@
  exception Eof
  exception LexicalError
  let comment_depth = ref 0
+
+ let dowhile_depth = ref 0
+ let sqblock_depth = ref 0
 } 
 
 let blank = [' ' '\n' '\t' '\r']+
@@ -17,6 +20,26 @@ rule start = parse
      | blank { start lexbuf }
      | "/*" { comment_depth :=1; comment lexbuf; start lexbuf }
      | eof   { EOF}
+
+     | "int[" {TARR}
+     | ']' {start lexbuf}
+     | "int" {TINT}
+     | '=' {ASSIGN}
+     | "if" {IF}
+     | "while" {if !dowhile_depth > 0
+                    then (dowhile_depth := !dowhile_depth-1; start lexbuf)
+                    else WHILE}
+     | "do" {dowhile_depth := !dowhile_depth+1; DOWHILE}
+     | "read" {READ}
+     | "print" {PRINT}
+     | '{' {BLOCK}
+     | '}' {BLOCK}
+     | '+' {ADD}
+     | '-' {SUB}
+     | '*' {MUL}
+     | '/' {DIV}
+
+
      | _ { raise LexicalError }
 
 and comment = parse
