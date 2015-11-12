@@ -21,23 +21,36 @@ rule start = parse
      | "/*" { comment_depth :=1; comment lexbuf; start lexbuf }
      | eof   { EOF}
 
-     | "int[" {TARR}
-     | ']' {start lexbuf}
-     | "int" {TINT}
-     | '=' {ASSIGN}
-     | "if" {IF}
-     | "while" {if !dowhile_depth > 0
-                    then (dowhile_depth := !dowhile_depth-1; start lexbuf)
-                    else WHILE}
-     | "do" {dowhile_depth := !dowhile_depth+1; DOWHILE}
-     | "read" {READ}
-     | "print" {PRINT}
-     | '{' {BLOCK}
-     | '}' {BLOCK}
-     | '+' {ADD}
-     | '-' {SUB}
-     | '*' {MUL}
-     | '/' {DIV}
+     | "int"    {INT}
+     | "+"      {PLUS}
+     | "-"      {MINUS}
+     | "*"      {STAR}
+     | "/"      {SLASH}
+     | "=="     {EQUALEQUAL}
+     | "="      {EQUAL}
+     | "<="     {LE}
+     | ">="     {GE}
+     | "<"      {LT}
+     | ">"      {GT}
+     | "!"      {NOT}
+     | "&&"     {AND}
+     | "||"     {OR}
+     | "if"     {IF}
+     | "else"   {ELSE}
+     | "while"  {WHILE}
+     | "do"     {DO}
+     | "read"   {READ}
+     | "print"  {PRINT}
+     | ";"      {SEMICOLON}
+     | "{"      {LBRACE}
+     | "}"      {RBRACE}
+     | "["      {LBLOCK}
+     | "]"      {RBLOCK}
+     | "("      {LPAREN}
+     | ")"      {RPAREN}
+     | number   {NUM (int_of_string (Lexing.lexeme lexbuf))}
+     | id       {ID (Lexing.lexeme lexbuf)}
+
 
 
      | _ { raise LexicalError }
