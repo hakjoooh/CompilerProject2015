@@ -12,6 +12,22 @@
 %token LBRACE RBRACE LBLOCK RBLOCK LPAREN RPAREN EOF
 
 
+
+
+
+%right ASSIGN
+%right IF THEN ELSE
+%left OR
+%left AND
+%left EQUALEQUAL
+%left LT LE GT GE
+%left PLUS MINUS
+%left STAR SLASH
+%right NOT
+%left LPAREN RPAREN LBLOCK RBLOCK
+
+
+
 %start program
 %type <S.program> program
 %%

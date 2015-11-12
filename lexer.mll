@@ -19,7 +19,7 @@ let number = ['0'-'9']+
 rule start = parse 
      | blank { start lexbuf }
      | "/*" { comment_depth :=1; comment lexbuf; start lexbuf }
-     | eof   { EOF}
+
 
      | "int"    {INT}
      | "+"      {PLUS}
@@ -50,6 +50,7 @@ rule start = parse
      | ")"      {RPAREN}
      | number   {NUM (int_of_string (Lexing.lexeme lexbuf))}
      | id       {ID (Lexing.lexeme lexbuf)}
+     | eof      { EOF}
 
 
 
