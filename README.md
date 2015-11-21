@@ -47,7 +47,8 @@ final code (i.e., the number of instructions being executed).
     1
     The number of instructions executed : 7
     == optimized target program ==
-    0 : write 1
+    0 : t1 = 0
+    0 : write t1
     0 : HALT
     == execute the optimized target program ==
     1
